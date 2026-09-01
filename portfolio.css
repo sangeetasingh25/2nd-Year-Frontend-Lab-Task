@@ -1,0 +1,159 @@
+*{
+    box-sizing:border-box;
+}
+
+button{
+    display: block;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+}
+img{
+    display: block;
+    margin: 20px auto 0;
+    width: 450px;
+}
+h2{
+    color: rgb(131, 23, 23);
+    text-align: center;
+    
+}
+h5{
+    text-align: center;
+    color: rgb(131, 23, 23);
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#box1{
+    border:1px solid pink;
+    border-radius: 10px;
+    background-color: rgb(223, 198, 201);
+    padding-bottom:60px;
+    transition:transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: reveal linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#box1:hover{
+    transform: translateY(-8px);
+}
+#box2{
+ 
+    border:1px solid pink;
+    border-radius: 10px;
+    background-color: rgb(223, 198, 201);
+    padding-bottom:60px;
+    transition:transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: reveal linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+#box2:hover{
+    transform: translateY(-8px);
+}
+#box3{
+    border:1px solid pink;
+    border-radius: 10px;
+    background-color: rgb(223, 198, 201);
+    padding-bottom:60px;
+    transition:transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: reveal linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+#box3:hover{
+    transform: translateY(-8px);
+}
+.skill{
+    text-align: center;
+}
+.discover{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border-radius: 15px;
+    background-color: plum;
+    color:white;
+    height:35px;
+    padding:0px 20px;
+}
+.discover:hover{
+    background-color: pink;
+    color: plum;
+}
+.skills{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:40px;
+    padding-bottom: 80px;
+}
+.button{
+    padding:5px 15px;
+    background-color: white;
+    border-radius: 30px;
+    font-size: 20px;
+}
+.projects{
+    background-color: lavender;
+     opacity: 0;
+    transform: translateY(100px);
+    animation: reveal linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+.menu{
+    border:2px solid pink;
+    border-radius:20px;
+    padding-left:30px;
+    transition:transform 0.3s ease;
+}
+.menu:hover{
+    transform: translateY(-8px);
+}
+.portfolio{
+    border:2px solid pink;
+    border-radius:20px;
+    padding-left:30px;
+     transition:transform 0.3s ease;
+}
+.portfolio:hover{
+    transform: translateY(-8px);
+}
+.bloom-together{
+   opacity: 0;
+    transform: translateY(100px);
+    animation: reveal linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%; 
+}
+footer{
+    text-align: center;
+    background-color: lavender;
+    color:pink;
+    padding:10px 15px;
+    border-radius:30px;
+   font-size: 15px;
+}
