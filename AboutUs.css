@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    background-color: lightpink;
+    
+}
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.aboutsection{
+    background-color: rgb(156, 86, 134);
+    color:#B38735;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    border-radius: 12px;
+}
+.Info{
+    height:150px;
+    background-color: rgb(156, 86, 134);
+    color:#B38735;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px; 
+    padding:20px;
+    border-radius: 12px;
+}
+.Movies{
+   background-color: rgb(156, 86, 134);
+    color:#B38735;
+    height:210px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    padding:20px;
+    border-radius: 12px;
+}
+.Cities{
+     background-color: rgb(156, 86, 134);
+    color:#B38735;
+    height:210px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    padding:20px;
+    border-radius: 12px;
+}
+.Movies li,
+.Cities li {
+    padding: 6px;
+    transition: 0.3s;
+}
+
+.Movies li:hover,
+.Cities li:hover {
+    background-color: #B38735;
+    color: rgb(156, 86, 134);
+    cursor: pointer;
+}
+.Info,
+.Movies,
+.Cities {
+    transition: 0.3s ease;
+}
+.aboutsection:hover,
+.Info:hover,
+.Movies:hover,
+.Cities:hover {
+    transform: translateY(-10px);
+}
+@media (max-width: 768px) {
+
+    .aboutsection {
+        height: 150px;
+    }
+
+    .aboutsection h1 {
+        font-size: 32px;
+    }
+
+    .Info {
+        height: auto;
+    }
+
+    .Info h1,
+    .Movies h1,
+    .Cities h1 {
+        font-size: 25px;
+    }
+
+    .Info p {
+        font-size: 16px;
+    }
+
+    .lists {
+        grid-template-columns: 1fr;
+    }
+}
