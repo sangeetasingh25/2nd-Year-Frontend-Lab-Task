@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task 9 - Async Programming</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #f5eaff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 550px;
+            padding: 35px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #292b55;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #777;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        button {
+            background: #6c63ff;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5148d9;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #status {
+            margin-top: 25px;
+            color: #666;
+            font-size: 15px;
+        }
+
+        
+
+        .loader {
+            width: 35px;
+            height: 35px;
+            border: 4px solid #ddd;
+            border-top: 4px solid #6c63ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 15px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        
+
+        #dataContainer {
+            margin-top: 25px;
+            display: none;
+            text-align: left;
+        }
+
+        .data-card {
+            background: #f5f5ff;
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 5px solid #6c63ff;
+        }
+
+        .data-card h2 {
+            color: #373b70;
+            margin-bottom: 15px;
+        }
+
+        .data-card p {
+            margin-bottom: 12px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .success {
+            color: #198754 !important;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #dc3545 !important;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 25px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="icon">🌐</div>
+
+        <h1>Server Data Fetcher</h1>
+
+        <p class="subtitle">
+            Click the button below to fetch data from the server.
+            Please wait while we process your request.
+        </p>
+
+
+        
+
+        <button id="fetchBtn">
+            Fetch Server Data
+        </button>
+
+
+      
+
+        <p id="status">
+            Click the button to start fetching data.
+        </p>
+
+
+        
+
+        <div class="loader" id="loader"></div>
+
+
+       
+
+        <div id="dataContainer">
+
+            <div class="data-card">
+
+                <h2>Fetched User Details</h2>
+
+                <p><strong>Name:</strong> <span id="name"></span></p>
+
+                <p><strong>Email:</strong> <span id="email"></span></p>
+
+                <p><strong>Age:</strong> <span id="age"></span></p>
+
+                <p><strong>City:</strong> <span id="city"></span></p>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Created using HTML, CSS and JavaScript
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        
+
+        let fetchBtn = document.getElementById("fetchBtn");
+
+        let status = document.getElementById("status");
+
+        let loader = document.getElementById("loader");
+
+        let dataContainer = document.getElementById("dataContainer");
+
+
+        
+
+        function fetchData() {
+
+            return new Promise(function(resolve, reject) {
+
+                
+
+                setTimeout(function() {
+
+                    let userData = {
+
+                        name: "Sangeeta Singh",
+
+                        email: "sangeetasingh3609@gmail.com",
+
+                        age: 20,
+
+                        city: "Mathura"
+
+                    };
+
+                   
+
+                    resolve(userData);
+
+                }, 3000);
+
+            });
+
+        }
+
+
+        
+
+        fetchBtn.addEventListener("click", function() {
+
+            
+
+            dataContainer.style.display = "none";
+
+           
+
+            status.textContent = "Fetching data from server...";
+
+            status.className = "";
+
+            
+
+            loader.style.display = "block";
+
+            
+
+            fetchBtn.disabled = true;
+
+
+            
+
+            fetchData()
+
+                .then(function(data) {
+
+                  
+
+                    document.getElementById("name").textContent = data.name;
+
+                    document.getElementById("email").textContent = data.email;
+
+                    document.getElementById("age").textContent = data.age;
+
+                    document.getElementById("city").textContent = data.city;
+
+
+                    
+
+                    dataContainer.style.display = "block";
+
+                    status.textContent = "Data fetched successfully!";
+
+                    status.className = "success";
+
+                })
+
+                .catch(function(error) {
+
+                    
+
+                    status.textContent = "Error: " + error;
+
+                    status.className = "error";
+
+                })
+
+                .finally(function() {
+
+                    
+
+                    loader.style.display = "none";
+
+                    fetchBtn.disabled = false;
+
+                });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
