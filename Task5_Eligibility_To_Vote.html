@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Eligibility Checker</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            width: 400px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            color: #444;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .eligible {
+            display: block !important;
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .not-eligible {
+            display: block !important;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        footer {
+            margin-top: 25px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        @media (max-width: 450px) {
+            .container {
+                width: 100%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="icon">🎂</div>
+
+        <h1>Age Eligibility Checker</h1>
+
+        <p>Enter your age below to find out whether you are eligible to vote.</p>
+
+        <label for="age">Enter Your Age</label>
+
+        <input type="number" id="age" placeholder="e.g. 18" min="0">
+
+        <button onclick="checkAge()">Check Eligibility</button>
+
+        <div id="result"></div>
+
+        <footer>
+            Made with HTML, CSS & JavaScript
+        </footer>
+
+    </div>
+
+    <script>
+        function checkAge() {
+            let age = Number(document.getElementById("age").value);
+            let result = document.getElementById("result");
+            if (document.getElementById("age").value === "" ||
+                !Number.isInteger(age) || age < 0) {
+                result.className = "not-eligible";
+                result.innerHTML = "Please enter a valid age.";
+
+            }
+            else if (age >= 18) {
+                result.className = "eligible";
+                result.innerHTML = "Congratulations! You are eligible to vote. 🎉";
+            }
+            else {
+                result.className = "not-eligible";
+                result.innerHTML = "Sorry! You are not eligible to vote yet.";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+
