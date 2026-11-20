@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task 7 - DOM Applications</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #f5eaff);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #292b55;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #373b70;
+            margin-bottom: 20px;
+        }
+
+
+        /* TO-DO LIST */
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            min-width: 0;
+            padding: 13px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #6c63ff;
+        }
+
+        button {
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add-btn {
+            background: #6c63ff;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #5148d9;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f5f5ff;
+            padding: 13px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #6c63ff;
+            gap: 10px;
+        }
+
+        .task-text {
+            flex: 1;
+            overflow-wrap: anywhere;
+            color: #333;
+        }
+
+        .delete-btn {
+            background: #ffe0e0;
+            color: #d63333;
+        }
+
+        .delete-btn:hover {
+            background: #ffc2c2;
+        }
+
+
+        
+
+        .gallery {
+            text-align: center;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail {
+            width: 110px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.08);
+        }
+
+        .thumbnail.active {
+            border-color: #6c63ff;
+        }
+
+        footer {
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            padding: 10px;
+        }
+
+
+       
+
+        @media (max-width: 500px) {
+
+            .section {
+                padding: 20px 15px;
+            }
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            .main-image {
+                height: 230px;
+            }
+
+            .thumbnail {
+                width: 75px;
+                height: 60px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>DOM Applications</h1>
+
+        <p class="subtitle">
+            JavaScript Practice | Task 7
+        </p>
+
+
+        <!-- PART 1: TO-DO LIST -->
+
+        <div class="section">
+
+            <h2>📝 My To-Do List</h2>
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Enter your task..."
+                >
+
+                <button class="add-btn" id="addBtn">
+                    + Add Task
+                </button>
+
+            </div>
+
+            <ul id="taskList"></ul>
+
+        </div>
+
+
+        <!-- PART 2: IMAGE GALLERY -->
+
+        <div class="section gallery">
+
+            <h2>🖼️ My Image Gallery</h2>
+
+          
+
+            <img
+                src="https://picsum.photos/id/1015/800/500"
+                id="mainImage"
+                class="main-image"
+                alt="Selected gallery image"
+            >
+
+           
+
+            <div class="thumbnails">
+
+                <img
+                    src="https://picsum.photos/id/1015/200/120"
+                    class="thumbnail active"
+                    alt="Mountain landscape"
+                >
+
+                <img
+                    src="https://picsum.photos/id/1016/200/120"
+                    class="thumbnail"
+                    alt="Forest landscape"
+                >
+
+                <img
+                    src="https://picsum.photos/id/1018/200/120"
+                    class="thumbnail"
+                    alt="Nature landscape"
+                >
+
+                <img
+                    src="https://picsum.photos/id/1019/200/120"
+                    class="thumbnail"
+                    alt="Mountain view"
+                >
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Created using HTML, CSS and JavaScript
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        
+        // PART 1: TO-DO LIST
+       
+
+        let taskInput = document.getElementById("taskInput");
+
+        let taskList = document.getElementById("taskList");
+
+        let addBtn = document.getElementById("addBtn");
+
+
+      
+
+        function addTask() {
+
+            let taskValue = taskInput.value.trim();
+
+            if (taskValue === "") {
+
+                alert("Please enter a task!");
+
+                return;
+
+            }
+
+
+           
+
+            let li = document.createElement("li");
+
+
+            
+
+            let span = document.createElement("span");
+
+            span.textContent = taskValue;
+
+            span.className = "task-text";
+
+
+            
+
+            let deleteBtn = document.createElement("button");
+
+            deleteBtn.textContent = "Delete";
+
+            deleteBtn.className = "delete-btn";
+
+
+           
+
+            deleteBtn.addEventListener("click", function() {
+
+                li.remove();
+
+            });
+
+
+            
+
+            li.appendChild(span);
+
+            li.appendChild(deleteBtn);
+
+
+            
+
+            taskList.appendChild(li);
+
+
+            
+
+            taskInput.value = "";
+
+        }
+
+
+       
+
+        addBtn.addEventListener("click", addTask);
+
+
+      
+
+        taskInput.addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                addTask();
+
+            }
+
+        });
+
+
+
+        
+        // PART 2: IMAGE GALLERY
+      
+
+
+        let mainImage = document.getElementById("mainImage");
+
+        let thumbnails = document.querySelectorAll(".thumbnail");
+
+
+        
+
+        thumbnails.forEach(function(image) {
+
+            image.addEventListener("click", function() {
+
+               
+
+                mainImage.src = image.src.replace("/200/120", "/800/500");
+
+                
+
+                thumbnails.forEach(function(img) {
+
+                    img.classList.remove("active");
+
+                });
+
+
+        
+
+                image.classList.add("active");
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
